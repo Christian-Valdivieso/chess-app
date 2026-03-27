@@ -37,7 +37,15 @@ export default function Home() {
 
                         {openings.map((opening) => (
                             <div key={opening.id} className="p-6 bg-gray-800 border border-gray-700 rounded-xl shadow-lg">
-                                <h2 className="text-2xl font-semibold text-yellow-500">{opening.name}</h2>
+                                <div className="flex justify-between items-center">
+                                    <h2 className="text-2xl font-semibold text-yellow-500">{opening.name}</h2>
+
+                                    <img
+                                        src={opening.is_white ? '/icons/pawn-white.png' : '/icons/pawn-black.png'}
+                                        alt="Chess Piece"
+                                        className="w-8 h-8 object-contain"
+                                    />
+                                </div>
                                 <p className="font-mono bg-black p-2 mt-2 rounded text-green-400">{opening.moves}</p>
                                 <p className="mt-3 text-gray-400">{opening.description}</p>
                             </div>

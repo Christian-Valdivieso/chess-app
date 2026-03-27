@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export default function NewOpening() {
-    const [formData, setFormData] = useState({ name: '', moves: '', description: '' });
+    const [formData, setFormData] = useState({ name: '', moves: '', description: '', is_white: true });
     const router = useRouter();
 
     const handleSubmit = async (e) => {
@@ -30,6 +30,18 @@ export default function NewOpening() {
                     <div>
                         <label className="block mb-1 text-sm text-gray-400">Opening Name</label>
                         <input type="text" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-blue-500 text-white" placeholder="e.g. Queen's Gambit" />
+                    </div>
+
+                    <div>
+                        <label className="block mb-1 text-sm text-gray-400">Side</label>
+                        <select
+                            value={formData.is_white}
+                            onChange={(e) => setFormData({...formData, is_white: e.target.value === 'true'})}
+                            className="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white"
+                        >
+                            <option value="true">White Pieces ⚪</option>
+                            <option value="false">Black Pieces ⚫</option>
+                        </select>
                     </div>
 
                     <div>

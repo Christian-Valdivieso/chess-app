@@ -12,10 +12,10 @@ export async function GET() {
 
 export async function POST(request) {
     try {
-        const { name, moves, description } = await request.json();
+        const { name, moves, description, is_white } = await request.json();
         await db.query(
-            'INSERT INTO openings (name, moves, description) VALUES (?, ?, ?)',
-            [name, moves, description]
+            'INSERT INTO openings (name, moves, description, is_white) VALUES (?, ?, ?, ?)',
+            [name, moves, description, is_white]
         );
         return NextResponse.json({ message: 'Opening saved successfully' });
     } catch (error) {
